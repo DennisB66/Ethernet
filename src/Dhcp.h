@@ -44,7 +44,7 @@
 #define MAGIC_COOKIE		0x63825363
 #define MAX_DHCP_OPT	16
 
-#define MAX_HOST_NAME_SIZE 24
+#define MAX_HOST_NAME_SIZE 12 // limited by available buffer size (30-18) in dhcp.cpp
 
 #define DEFAULT_LEASE	(900) //default lease time in seconds
 
