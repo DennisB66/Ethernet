@@ -9,11 +9,11 @@
 #include "Arduino.h"
 #include "utility/util.h"
 
-char HOST_NAME[] = "WIZNet";
+char HOST_NAME[MAX_HOST_NAME_SIZE + 1] = "WIZNet";
 //
 void DhcpClass::setHostName(char *dhcpHost) {
-	memset(HOST_NAME, 0, sizeof(HOST_NAME));
-	strcpy(HOST_NAME, dhcpHost);
+	HOST_NAME[MAX_HOST_NAME_SIZE] = 0;                // make sure we always have a terminated string
+	strncpy(HOST_NAME, dhcpHost, MAX_HOST_NAME_SIZE); // make sure we copy within valid array boundaries
 }
 //
 char * DhcpClass::getHostName() {
